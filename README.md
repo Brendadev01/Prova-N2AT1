@@ -4,8 +4,11 @@ Prova individual da matéria de estrutura de dados - "Planta industrial intelige
 Estes arquivos irão gerar timestamps aleatórios com os respectivos tipos que o usuário inserir no terminal. Em seguida, cada um será ordenado e salvo em arquivos diferentes, um para cada sensor. Por fim, será realizada a consulta do timestamp mais próximo da data inserida no terminal.
 
 Compilação dos arquivos(no terminal):
+
 gcc gerador.c -o gerador
+
 gcc organizador.c -o organizador
+
 gcc consulta.c -o consulta
 
 Exemplos de execução:
