@@ -12,6 +12,9 @@ gcc organizador.c -o organizador
 gcc consulta.c -o consulta
 
 Exemplos de execução:
+
 1-  ./gerador 10 06 2025 12 06 2025 PRES int VIBR float UMID bool TEMP texto
+
 2-  ./organizar timestamps
+
 3-  ./consulta
