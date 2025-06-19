@@ -27,7 +27,7 @@ time_t converter_para_timestamp(int dia, int mes, int ano, int hora, int min, in
     return ts;
 }
 
-long buscamaisproxima(Registro registros[], int n, long alvo) {
+long buscaRegistros(Registro registros[], int n, long alvo) {
     int inicio = 0, fim = n - 1;
     int mais_prox = -1;
     long menor_dif = 999999999;
@@ -54,10 +54,10 @@ int main() {
     char nome_sensor[32];
     int dia, mes, ano, hora, min, seg;
 
-    printf("Nome do sensor: ");
+    printf("Digite o nome do sensor: ");
     scanf("%s", nome_sensor);
 
-    printf("Data e hora (dd mm aaaa hh mm ss): ");
+    printf("Digite a data e hora (dd mm aaaa hh mm ss): ");
     if (scanf("%d %d %d %d %d %d", &dia, &mes, &ano, &hora, &min, &seg) != 6) {
         printf("Entrada inválida!\n");
         return 1;
@@ -88,7 +88,7 @@ int main() {
         return 1;
     }
 
-    int indice = buscamaisproxima(registros, total, alvo);
+    int indice = buscaaproximada(registros, total, alvo);
     printf("Leitura mais próxima:\nTimestamp: %ld\nValor: %s\n", registros[indice].timestamp, registros[indice].valor);
 
     return 0;
