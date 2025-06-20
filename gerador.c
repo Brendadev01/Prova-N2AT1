@@ -12,6 +12,11 @@ typedef enum {
 } TipoDado;
 
 time_t converter_para_timestamp(int dia, int mes, int ano, int hora, int min, int seg) {
+    if (dia < 1 || dia > 31 || mes < 1 || mes > 12) {
+        printf("Data invalida.\n");
+        exit(1);
+    }
+
     struct tm t = {0};
     t.tm_year = ano - 1900;
     t.tm_mon = mes - 1;
@@ -22,11 +27,6 @@ time_t converter_para_timestamp(int dia, int mes, int ano, int hora, int min, in
     t.tm_isdst = -1;
 
     time_t ts = mktime(&t);
-    if (ts == -1) {
-        printf("Data inválida.\n");
-        exit(1);
-    }
-
     return ts;
 }
 
@@ -87,7 +87,7 @@ int main(int argc, char *argv[]) {
         TipoDado tipo = obterVariavel(argv[i + 1]);
 
         if (tipo == TIPO_INVALIDO) {
-            printf("Tipo inválido para sensor %s\n", sensor);
+            printf("Tipo invalido para sensor %s\n", sensor);
             continue;
         }
 

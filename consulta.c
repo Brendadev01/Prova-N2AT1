@@ -20,14 +20,14 @@ time_t converter_para_timestamp(int dia, int mes, int ano, int hora, int min, in
 
     time_t ts = mktime(&t);
     if (ts == -1) {
-        printf("Data inválida.\n");
+        printf("Data invalida.\n");
         exit(1);
     }
 
     return ts;
 }
 
-long buscaRegistros(Registro registros[], int n, long alvo) {
+long buscamaisproxima(Registro registros[], int n, long alvo) {
     int inicio = 0, fim = n - 1;
     int mais_prox = -1;
     long menor_dif = 999999999;
@@ -54,10 +54,10 @@ int main() {
     char nome_sensor[32];
     int dia, mes, ano, hora, min, seg;
 
-    printf("Digite o nome do sensor: ");
+    printf("Nome do sensor: ");
     scanf("%s", nome_sensor);
 
-    printf("Digite a data e hora (dd mm aaaa hh mm ss): ");
+    printf("Data e hora (dd mm aaaa hh mm ss): ");
     if (scanf("%d %d %d %d %d %d", &dia, &mes, &ano, &hora, &min, &seg) != 6) {
         printf("Entrada inválida!\n");
         return 1;
@@ -70,7 +70,7 @@ int main() {
 
     FILE *arq = fopen(nome_arquivo, "r");
     if (!arq) {
-        printf("Sensor '%s' não encontrado.\n", nome_sensor);
+        printf("Sensor '%s' nao encontrado.\n", nome_sensor);
         return 1;
     }
 
@@ -88,8 +88,8 @@ int main() {
         return 1;
     }
 
-    int indice = buscaaproximada(registros, total, alvo);
-    printf("Leitura mais próxima:\nTimestamp: %ld\nValor: %s\n", registros[indice].timestamp, registros[indice].valor);
+    int indice = buscamaisproxima(registros, total, alvo);
+    printf("Leitura mais proxima:\nTimestamp: %ld\nValor: %s\n", registros[indice].timestamp, registros[indice].valor);
 
     return 0;
 }
